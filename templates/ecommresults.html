@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>PORTRAY</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/venobox/venobox.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center">
+            <h1 class="logo mr-auto"><a href="/">PORTRAY</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/favicon.png" alt="" class="img-fluid"></a> -->
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/#about">Documentation</a></li>
+                    <li><a href="/#ecomm">E-Commerce Analysis</a></li> <!-- PORTFOLIO -->
+                    <li><a href="/#trend">Trend Analysis</a></li> <!-- SERVICES -->
+                    <li><a href="/#team">Team</a></li>
+                    <li><a href="/#additions">Additions</a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header>
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Your Results</li>
+                </ol>
+                <h2>E-Commerce Analysis for {{ details }}</h2>
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section id="portfolio-details" , class="portfolio-details">
+            <div class="section-title">
+                    <h2>Figuring Out The Variables in our Results</h2>
+            </div>
+             <div class="col-lg-12 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="{{ url_for('static', filename='img/understand.png') }}" class="img-fluid animated" alt="">
+            </div>
+        </section>
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" , class="portfolio-details" style="background-color: #F3F5FA">
+            <div class="section-title">
+                    <h2>Top Products</h2>
+            </div>
+            <div class="card-deck" style="margin-right: 10px; margin-left: 10px;">
+
+                {% for key, row in top.iterrows() %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ row['Image_Link'] }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: medium;">{{ row["Name"] }}</h3>
+                        <h5 class="card-title" style="font-size: small; color: #3C4C6A">{{ row["Brand"] }}</h5>
+                        <p class="card-text" style="font-size: 12px">
+                            <strong>RSCORE: {{ row["RSCORE"] }}</strong> <br>
+                            Price:  {{ row["Price"] }} <br>
+                            Features: {{ row["Keywords"] }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ row['Image_Link'] }}"><small class="text-muted">{{ details }}</small></a>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+         <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" , class="portfolio-details">
+            <div class="section-title">
+                    <h2>Bottom Products</h2>
+            </div>
+            <div class="card-deck" style="margin-right: 10px; margin-left: 10px;">
+
+                {% for key, row in bottom.iterrows() %}
+                <div class="card">
+                    <img class="card-img-top" src="{{ row['Image_Link'] }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: medium;">{{ row["Name"] }}</h3>
+                        <h5 class="card-title" style="font-size: small; color: #3C4C6A">{{ row["Brand"] }}</h5>
+                        <p class="card-text" style="font-size: 12px">
+                            <strong>RSCORE: {{ row["RSCORE"] }}</strong> <br>
+                            Price:  {{ row["Price"] }} <br>
+                            Features: {{ row["Keywords"] }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ row['Image_Link'] }}"><small class="text-muted">{{ details }}</small></a>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+
+    </main><!-- End #main -->
+
+
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>PORTRAY</h3>
+                        <p>
+                            Round 3 Submission<br>
+                            Flipkart Grid 2.0<br>
+                            Fashion Intelligence System<br><br>
+                            <strong>Phone:</strong> 9205824219<br>
+                            <strong>Email:</strong> prabhavsingh55221@gmail.com<br>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#header">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#ecomm">E-Commerce</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#trend">Trend Analysis</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
+                        </ul>
+                    </div>
+                    <!-- <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+ -->
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                &copy; Copyright <strong><span>PORTRAY</span></strong>
+            </div>
+            <div class="credits">
+                Team <a href="https://dare2compete.com/o/flipkart-grid-20-software-development-challenge-flipkart-grid-20-flipkart-113664">ILLUMINATI</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/venobox/venobox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
+
+
+
+<!-- <div class="card">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap" height="180px" width="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap" height="180px" width="100px">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </div> -->
